@@ -2,7 +2,7 @@ title: App FAQs
 description: Frequently Asked Questions for our applications.
 email: your-email@example.com # İsteğe bağlı: iletişim için
 baseurl: "" # Kök dizinde yayınlanıyorsa boş bırakın
-url: "" # Sitenizin tam URL'si (örneğin, http://www.serhatgurkan.me/faq)
+url: "https://serhatgurkan.me" # Sitenizin tam URL'si
 
 # Koleksiyonlar: Her uygulama için bir SSS koleksiyonu
 collections:
@@ -20,4 +20,4 @@ markdown: kramdown
 
 # Eklentiler (eğer varsa)
 # plugins:
-#   - jekyll-feed 
+#   - jekyll-feed
