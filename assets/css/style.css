@@ -55,4 +55,85 @@ ul {
 /* Uygulama listesi için stil (index.md) */
 .app-list li {
   margin-bottom: 10px;
-} 
+}
+
+/* Soru-Cevap (Issue) Component Tasarımı */
+.issue-component {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 2rem 1.5rem;
+}
+.issue-component h2 {
+  margin-top: 1.5rem;
+  font-size: 1.3rem;
+  color: #2d3748;
+}
+.issue-input, .issue-textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: border 0.2s;
+}
+.issue-input:focus, .issue-textarea:focus {
+  border: 1.5px solid #3182ce;
+  outline: none;
+}
+.issue-btn {
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.issue-btn:hover {
+  background: #225ea8;
+}
+.issue-card {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+.issue-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2b6cb0;
+  margin-bottom: 0.3rem;
+}
+.issue-body {
+  color: #2d3748;
+  margin-bottom: 0.7rem;
+  white-space: pre-line;
+}
+.issue-meta {
+  font-size: 0.95rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+}
+.issue-comments {
+  margin-top: 0.7rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid #cbd5e0;
+}
+.issue-comment {
+  margin-bottom: 0.5rem;
+  font-size: 0.98rem;
+  color: #222;
+}
+@media (max-width: 600px) {
+  .issue-component {
+    padding: 1rem 0.3rem;
+  }
+}
