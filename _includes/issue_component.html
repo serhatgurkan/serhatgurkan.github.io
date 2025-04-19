@@ -1,0 +1,70 @@
+<!-- GitHub Soru & Cevap Componenti -->
+<!-- Bu dosyanın adının _includes/github_issue_qa.html olarak değiştirilmesi önerilir -->
+<div class="github-qa-component">
+  <h2>Sorular ve Cevaplar</h2>
+  <div id="issues-list">
+    <p>Yükleniyor...</p>
+  </div>
+</div>
+
+<script>
+// GitHub Issues'ı ve cevaplarını çekmek için basit bir fetch (public repo için çalışır)
+const repo = 'serhatgurkan/serhatgurkan.github.io';
+const issuesList = document.getElementById('issues-list');
+// Sadece 'soru' etiketli ve açık olan issuuları çek
+fetch(`https://api.github.com/repos/${repo}/issues?state=open&labels=soru`)
+  .then(res => res.json())
+  .then(issues => {
+    if (!Array.isArray(issues) || issues.length === 0) {
+      // Eğer hiç soru yoksa, bölümü gizleyebilir veya mesajı güncelleyebiliriz.
+      // Şimdilik basit bir mesaj gösterelim.
+      issuesList.innerHTML = '<p>Henüz bu etiketle sorulmuş bir soru yok.</p>';
+      // Alternatif olarak tüm component'i gizleyebilirsiniz:
+      // document.querySelector('.github-qa-component').style.display = 'none';
+      return;
+    }
+    issuesList.innerHTML = ''; // Listeyi temizle
+    issues.forEach(issue => {
+      const div = document.createElement('div');
+      div.className = 'issue-card'; // Mevcut stil sınıfını koruyalım veya yenisini tanımlayalım
+      div.innerHTML = `
+        <div class='issue-title'>${issue.title}</div>
+        <div class='issue-body'>${issue.body ? issue.body.replace(/\n/g, '<br>') : '<em>Açıklama yok.</em>'}</div>
+        <div class='issue-meta'>Soran: ${issue.user.login} | <a href='${issue.html_url}' target='_blank'>GitHub'da Gör</a></div>
+        <div class='issue-comments' id='comments-${issue.number}'><p><em>Yorumlar yükleniyor...</em></p></div>
+      `;
+      issuesList.appendChild(div);
+
+      // Yorumları (Cevapları) çek
+      fetch(issue.comments_url)
+        .then(res => res.json())
+        .then(comments => {
+          const commentsDiv = document.getElementById(`comments-${issue.number}`);
+          if (!Array.isArray(comments) || comments.length === 0) {
+            commentsDiv.innerHTML = '<em>Henüz cevap yok.</em>';
+          } else {
+            // Yorumları daha okunaklı hale getirelim
+            commentsDiv.innerHTML = '<strong>Cevaplar:</strong>' + comments.map(c => `
+              <div class='issue-comment'>
+                <span class='comment-author'>${c.user.login}:</span>
+                <div class='comment-body'>${c.body.replace(/\n/g, '<br>')}</div>
+              </div>
+            `).join('');
+          }
+        })
+        .catch(err => {
+          // Yorumları çekerken hata olursa
+          const commentsDiv = document.getElementById(`comments-${issue.number}`);
+          if (commentsDiv) {
+            commentsDiv.innerHTML = '<em>Yorumlar yüklenemedi.</em>';
+          }
+          console.error('Error fetching comments:', err);
+        });
+    });
+  })
+  .catch(err => {
+    // Issue'ları çekerken hata olursa
+    issuesList.innerHTML = '<p>Sorular yüklenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.</p>';
+    console.error('Error fetching issues:', err);
+  });
+</script>
