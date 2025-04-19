@@ -1,4 +1,12 @@
 <header>
-    <h1><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
-    <!-- İsterseniz navigasyon ekleyebilirsiniz -->
-</header> 
+    <div class="header-content">
+        <h1><a href="{{ "/" | relative_url }}">{{ site.title }}</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{{ "/" | relative_url }}">Ana Sayfa</a></li>
+                <li><a href="{{ "/budgetninja.html" | relative_url }}">BudgetNinja SSS</a></li>
+                <!-- Başka SSS sayfaları eklenirse buraya ekleyin -->
+            </ul>
+        </nav>
+    </div>
+</header>
