@@ -1,0 +1,23 @@
+title: App FAQs
+description: Frequently Asked Questions for our applications.
+email: your-email@example.com # İsteğe bağlı: iletişim için
+baseurl: "" # Kök dizinde yayınlanıyorsa boş bırakın
+url: "" # Sitenizin tam URL'si (örneğin, http://www.serhatgurkan.me/faq)
+
+# Koleksiyonlar: Her uygulama için bir SSS koleksiyonu
+collections:
+  budgetninja_faq:
+    output: false # Her SSS için ayrı sayfa oluşturma (listeleyeceğiz)
+  # Gelecekteki uygulamalar için koleksiyonları buraya ekleyin
+  # another_app_faq:
+  #   output: false
+
+# Markdown işlemcisi (isteğe bağlı, kramdown varsayılandır)
+markdown: kramdown
+
+# Tema (eğer Gemfile'da eklediyseniz)
+# theme: minima
+
+# Eklentiler (eğer varsa)
+# plugins:
+#   - jekyll-feed 
