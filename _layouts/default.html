@@ -8,9 +8,15 @@
 </head>
 <body>
     {% include header.html %}
-    <main>
-        {{ content }}
-    </main>
-    {% include footer.html %}
+    <div class="container">
+        <header>
+            <h1><a href="{{ "/" | relative_url }}">{{ site.title | escape }}</a></h1>
+            <!-- Optional: Add navigation here if needed -->
+        </header>
+        <main>
+            {{ content }}
+        </main>
+        {% include footer.html %}
+    </div>
 </body>
-</html> 
+</html>

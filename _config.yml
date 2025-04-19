@@ -1,13 +1,14 @@
-title: App FAQs
-description: Frequently Asked Questions for our applications.
+title: App Support Center
+description: >-
+  Frequently Asked Questions and Support for BudgetNinja and other apps.
 email: your-email@example.com # İsteğe bağlı: iletişim için
-baseurl: "" # Kök dizinde yayınlanıyorsa boş bırakın
-url: "https://serhatgurkan.me" # Sitenizin tam URL'si
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://faq.serhatgurkan.com" # the base hostname & protocol for your site, e.g. http://example.com
 
-# Koleksiyonlar: Her uygulama için bir SSS koleksiyonu
+# Collections for FAQs
 collections:
   budgetninja_faq:
-    output: false # Her SSS için ayrı sayfa oluşturma (listeleyeceğiz)
+    output: false # Don't create individual pages for each FAQ item
   # Gelecekteki uygulamalar için koleksiyonları buraya ekleyin
   # another_app_faq:
   #   output: false
@@ -15,9 +16,21 @@ collections:
 # Markdown işlemcisi (isteğe bağlı, kramdown varsayılandır)
 markdown: kramdown
 
-# Tema (eğer Gemfile'da eklediyseniz)
-# theme: minima
+# Build settings
+theme: minima # Using minima as a base, but overriding with local layouts/css
+plugins:
+  - jekyll-feed
 
-# Eklentiler (eğer varsa)
-# plugins:
-#   - jekyll-feed
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE

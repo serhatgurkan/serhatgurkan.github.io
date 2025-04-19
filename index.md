@@ -1,14 +1,17 @@
 ---
 layout: default
-title: Uygulama SSS Merkezi
+title: App FAQ Center
 ---
 
-<h1>Uygulamalarımız Hakkında Sıkça Sorulan Sorular</h1>
+<h1>Frequently Asked Questions About Our Apps</h1>
 
-<p>Hoş geldiniz! Burada uygulamalarımızla ilgili sıkça sorulan soruları ve cevaplarını bulabilirsiniz. Yardım almak istediğiniz uygulamayı aşağıdaki listeden seçin:</p>
+<p>Welcome! Here you can find frequently asked questions and answers about our applications. Select the application you need help with from the list below:</p>
 
 <ul class="app-list">
   <li><a href="{{ "/budgetninja.html" | relative_url }}">BudgetNinja</a></li>
-  <!-- Yeni uygulamalar eklendikçe buraya listelemeyi unutmayın -->
+  <!-- Remember to list new apps here as they are added -->
   <!-- <li><a href="{{ "/anotherapp.html" | relative_url }}">Another App</a></li> -->
 </ul>
+
+<!-- Include the GitHub Q&A Section -->
+{% include github_issue_qa.html %}

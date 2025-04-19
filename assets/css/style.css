@@ -1,26 +1,31 @@
+/* Basic Reset & Body */
 body {
-    font-family: sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.6;
-    margin: 20px;
+    margin: 0;
     padding: 0;
-    color: #333;
+    background-color: #f8f9fa;
+    color: #343a40;
 }
 
-header, footer {
+/* Container */
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 0 15px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Header */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 0;
     text-align: center;
-    padding: 10px 0;
-    color: #555;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.header-content {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 header h1 {
@@ -30,8 +35,16 @@ header h1 {
 }
 
 header h1 a {
-    color: #333;
+    color: white;
     text-decoration: none;
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header nav ul {
@@ -57,31 +70,68 @@ header nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Main Content */
 main {
     max-width: 800px;
     margin: 20px auto;
-    padding: 15px;
+    padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 5px;
 }
 
+h1, h2 {
+    color: #0056b3;
+}
+
 h1 {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid #dee2e6;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
+h2 {
+    margin-top: 30px;
+}
+
+/* App List */
+.app-list {
+    list-style: none;
+    padding: 0;
+}
+
+.app-list li {
+    margin-bottom: 10px;
+}
+
+.app-list a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.app-list a:hover {
+    text-decoration: underline;
+}
+
+/* FAQ List */
+.faq-list {
+    margin-top: 20px;
+}
+
 .faq-item {
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-    border-bottom: 1px dashed #ddd;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
 }
 
 .faq-item h2 {
     margin-top: 0;
     margin-bottom: 10px;
-    color: #0056b3; /* Soru başlığı rengi */
+    font-size: 1.2em;
+    color: #495057;
 }
 
 .faq-answer p:last-child {
@@ -92,162 +142,131 @@ ul {
     padding-left: 20px;
 }
 
-/* Uygulama listesi için stil (index.md) */
-.app-list li {
-  margin-bottom: 10px;
+/* GitHub Q&A Section */
+.github-qa-section, .github-qa-component {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f1f3f5;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
 }
 
-/* Soru-Cevap (Issue) Component Tasarımı */
-.issue-component {
-  max-width: 700px;
-  margin: 2rem auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  padding: 2rem 1.5rem;
-}
-.issue-component h2 {
-  margin-top: 1.5rem;
-  font-size: 1.3rem;
-  color: #2d3748;
-}
-.issue-input, .issue-textarea {
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.7rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  font-size: 1rem;
-  background: #f9fafb;
-  transition: border 0.2s;
-}
-.issue-input:focus, .issue-textarea:focus {
-  border: 1.5px solid #3182ce;
-  outline: none;
-}
-.issue-btn {
-  background: #3182ce;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.issue-btn:hover {
-  background: #225ea8;
-}
-.issue-card {
-  background: #f9f9f9; /* Arka planı ana içerikle uyumlu yapalım */
-  border: 1px solid #eee;
-  border-radius: 8px;
-  margin-bottom: 20px; /* Kartlar arası boşluk */
-  padding: 15px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
-}
-.issue-title {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #0056b3; /* FAQ başlıklarıyla uyumlu renk */
-  margin-bottom: 0.3rem;
-}
-.issue-body {
-  color: #333; /* Ana metin rengi */
-  margin-bottom: 0.7rem;
-  white-space: pre-line;
-  line-height: 1.5;
-}
-.issue-meta {
-  font-size: 0.9rem;
-  color: #718096;
-  margin-bottom: 0.5rem;
-  margin-top: 10px;
-}
-.issue-meta a {
-  color: #0056b3;
-  text-decoration: none;
-}
-.issue-meta a:hover {
-  text-decoration: underline;
-}
-.issue-comments {
-  margin-top: 15px;
-  padding-top: 10px;
-  padding-left: 15px;
-  border-left: 3px solid #e0e0e0;
-}
-.issue-comments strong {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
-}
-.issue-comment {
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-  color: #222;
-}
-.comment-author {
-    font-weight: bold;
-    color: #111;
-    margin-right: 5px;
-}
-.comment-body {
-    display: inline; /* Yazarla aynı satırda */
-    color: #333;
-    line-height: 1.4;
+.github-qa-section h2, .github-qa-component h2 {
+    margin-top: 0;
+    color: #0056b3;
 }
 
-/* FAQ Sayfası - GitHub Soru & Cevap Bölümü */
-.github-qa-section {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #eee; /* SSS ile ayırmak için */
+#issues-list {
+    margin-top: 15px;
 }
 
-.github-qa-section h2 {
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.github-qa-section p {
-  margin-bottom: 15px;
-}
-
-/* GitHub'da Soru Sor Butonu */
-.button, .issue-btn /* Mevcut issue-btn stilini de kullanalım */ {
-  display: inline-block;
-  background: #007bff; /* Mavi tonu */
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.button:hover, .issue-btn:hover {
-  background: #0056b3; /* Hover rengi */
-  color: #fff;
-}
-
-/* GitHub Soru & Cevap Componenti (github_issue_qa.html içindeki) */
-.github-qa-component {
-  margin-top: 30px;
-}
-
-.github-qa-component h2 {
-  font-size: 1.4rem; /* Biraz daha küçük başlık */
-  margin-bottom: 20px;
-  color: #444;
-}
-
-/* Yükleniyor/Hata mesajları */
 #issues-list p {
     color: #777;
     font-style: italic;
+}
+
+.issue-card {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.issue-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #0056b3;
+}
+
+.issue-body {
+    margin-bottom: 10px;
+    color: #495057;
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+.issue-meta {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.issue-meta a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.issue-meta a:hover {
+    text-decoration: underline;
+}
+
+.issue-comments {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #dee2e6;
+    padding-left: 15px;
+    border-left: 3px solid #e0e0e0;
+}
+
+.issue-comment {
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    color: #222;
+}
+
+.comment-author {
+    font-weight: bold;
+    margin-right: 5px;
+    color: #343a40;
+}
+
+.comment-body {
+    display: inline; /* Keep author and comment on same line if short */
+    color: #495057;
+    line-height: 1.4;
+}
+
+/* Button */
+.button, .issue-btn {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover, .issue-btn:hover {
+    background-color: #218838;
+    color: white;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px 0;
+    border-top: 1px solid #dee2e6;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #dee2e6;
+    margin: 30px 0;
 }
 
 @media (max-width: 600px) {
