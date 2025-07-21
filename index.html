@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelDiscovery - Your Perfect Destination Awaits</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0891B2;
+            --secondary-color: #06B6D4;
+            --accent-color: #F59E0B;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --background-light: #F0FDFA;
+            --white: #FFFFFF;
+            --success: #10B981;
+            --error: #EF4444;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background-light);
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background-color: rgba(8, 145, 178, 0.1);
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+            background-color: rgba(8, 145, 178, 0.1);
+        }
+
+        /* Container and Section Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Recommendations Section */
+        .recommendations {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .recommendation-card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .recommendation-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .recommendation-content {
+            padding: 1.5rem;
+        }
+
+        .recommendation-content h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .recommendation-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* About Us Styles */
+        .about-section {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .about-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--background-light);
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .form-status.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .form-status.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .recommendation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">TravelDiscovery</a>
+            <ul class="nav-links">
+                <li><a class="nav-link active" onclick="showPage('home')">Home</a></li>
+                <li><a class="nav-link" onclick="showPage('about')">About Us</a></li>
+                <li><a class="nav-link" onclick="showPage('contact')">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero">
+                <h1>Discover Your Perfect Destination</h1>
+                <p>Let us help you find ideal travel destinations based on your preferences. Explore beaches, temples, and countries with our comprehensive recommendations and make informed travel decisions.</p>
+            </div>
+
+            <!-- Beach Recommendations -->
+            <section class="recommendations">
+                <h2 class="section-title">Beach Paradise Destinations</h2>
+                <div class="recommendation-grid">
+                    <div class="recommendation-card">
+                        <img src="https://placehold.co/600x400/0891B2/FFFFFF?text=Maldives+Beach" alt="Maldives Beach">
+                        <div class="recommendation-content">
+                            <h3>Maldives - Crystal Clear Waters</h3>
+                            <p>Experience pristine white sand beaches and turquoise waters. Perfect for snorkeling, diving, and romantic getaways with overwater bungalows.</p>
+                        </div>
+                    </div>
+                    <div class="recommendation-card">
+                        <img src="https://placehold.co/600x400/06B6D4/FFFFFF?text=Bali+Beach" alt="Bali Beach">
+                        <div class="recommendation-content">
+                            <h3>Bali - Tropical Paradise</h3>
+                            <p>Discover stunning beaches with world-class surfing spots, vibrant beach clubs, and breathtaking sunsets along the Indonesian coast.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Temple Recommendations -->
+            <section class="recommendations">
+                <h2 class="section-title">Ancient Temple Wonders</h2>
+                <div class="recommendation-grid">
+                    <div class="recommendation-card">
+                        <img src="https://placehold.co/600x400/F59E0B/FFFFFF?text=Angkor+Wat" alt="Angkor Wat Temple">
+                        <div class="recommendation-content">
+                            <h3>Angkor Wat, Cambodia</h3>
+                            <p>Explore the world's largest religious monument, featuring stunning Khmer architecture and intricate stone carvings dating back to the 12th century.</p>
+                        </div>
+                    </div>
+                    <div class="recommendation-card">
+                        <img src="https://placehold.co/600x400/8B5CF6/FFFFFF?text=Machu+Picchu" alt="Machu Picchu">
+                        <div class="recommendation-content">
+                            <h3>Machu Picchu, Peru</h3>
+                            <p>Journey to the ancient Incan citadel set high in the Andes Mountains, offering breathtaking views and mysterious historical significance.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Country Recommendations -->
+            <section class="recommendations">
+                <h2 class="section-title">Must-Visit Countries</h2>
+                <div class="recommendation-grid">
+                    <div class="recommendation-card">
+                        <img src="https://placehold.co/600x400/10B981/FFFFFF?text=Japan" alt="Japan">
+                        <div class="recommendation-content">
+                            <h3>Japan - Land of the Rising Sun</h3>
+                            <p>Experience the perfect blend of ancient traditions and modern technology, from serene temples to bustling cities and cherry blossoms.</p>
+                        </div>
+                    </div>
+                    <div class="recommendation-card">
+                        <img src="https://placehold.co/600x400/EF4444/FFFFFF?text=Italy" alt="Italy">
+                        <div class="recommendation-content">
+                            <h3>Italy - Art, History, and Cuisine</h3>
+                            <p>Immerse yourself in Renaissance art, ancient Roman ruins, world-renowned cuisine, and stunning coastal villages along the Mediterranean.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- About Us Page -->
+    <div id="about" class="page">
+        <div class="container">
+            <div class="about-section">
+                <h2>Our Mission</h2>
+                <p>At TravelDiscovery, we believe that every journey should be extraordinary. Our mission is to help travelers discover their perfect destinations by providing personalized recommendations, comprehensive information, and inspiring content that transforms travel dreams into unforgettable experiences.</p>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Values</h2>
+                <ul style="list-style-position: inside; color: var(--text-secondary);">
+                    <li style="margin-bottom: 0.5rem;">Authenticity - We provide genuine, first-hand travel insights</li>
+                    <li style="margin-bottom: 0.5rem;">Personalization - Every traveler is unique, and so are our recommendations</li>
+                    <li style="margin-bottom: 0.5rem;">Sustainability - We promote responsible travel that respects local cultures and environments</li>
+                    <li style="margin-bottom: 0.5rem;">Innovation - We continuously improve our platform to enhance your travel planning experience</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2>Our Team</h2>
+                <p style="margin-bottom: 2rem;">Our passionate team of travel enthusiasts, technology experts, and content creators work together to bring you the best travel recommendations and planning tools.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <h3 style="color: var(--primary-color);">Sarah Johnson</h3>
+                        <p style="color: var(--text-secondary);">Founder & CEO</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">World traveler with 15 years of experience in the tourism industry</p>
+                    </div>
+                    <div class="team-member">
+                        <h3 style="color: var(--primary-color);">Michael Chen</h3>
+                        <p style="color: var(--text-secondary);">Head of Technology</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Tech innovator passionate about creating seamless user experiences</p>
+                    </div>
+                    <div class="team-member">
+                        <h3 style="color: var(--primary-color);">Emma Rodriguez</h3>
+                        <p style="color: var(--text-secondary);">Content Director</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Travel writer and photographer with stories from over 50 countries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Page -->
+    <div id="contact" class="page">
+        <div class="container">
+            <h1 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Get in Touch</h1>
+            <p style="text-align: center; margin-bottom: 3rem; color: var(--text-secondary);">Have questions about your next adventure? We'd love to hear from you!</p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+                
+                <div id="formStatus" class="form-status" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(pageName) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageName).classList.add('active');
+            
+            // Update active nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Find and activate the corresponding nav link
+            navLinks.forEach(link => {
+                if (link.textContent.toLowerCase().includes(pageName) || 
+                    (pageName === 'home' && link.textContent === 'Home')) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top when changing pages
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Contact Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Simulate form submission
+            const statusDiv = document.getElementById('formStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'form-status success';
+            statusDiv.textContent = 'Thank you for your message! We will get back to you within 24 hours.';
+            
+            // Clear form
+            this.reset();
+            
+            // Hide status message after 5 seconds
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+            
+            // In a real application, you would send this data to a server
+            console.log('Form submitted with data:', formData);
+        });
+
+        // Add smooth hover effects to recommendation cards
+        document.querySelectorAll('.recommendation-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('h3').textContent;
+                alert(`Learn more about ${title} on our detailed destination page (coming soon!)`);
+            });
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
+
